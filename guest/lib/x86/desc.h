@@ -75,12 +75,18 @@ typedef struct  __attribute__((packed)) {
 	u16 iomap_base;
 } tss64_t;
 
+#ifdef __x86_64                                
+#define ACRN_SIZE ".quad"
+#else                               
+#define ACRN_SIZE ".long"
+#endif
 #define ASM_TRY(catch)                                  \
     "movl $0, %%gs:4 \n\t"                              \
     ".pushsection .data.ex \n\t"                        \
-    ".quad 1111f, " catch "\n\t"                        \
+    ACRN_SIZE " 1111f, " catch "\n\t"                   \
     ".popsection \n\t"                                  \
     "1111:"
+
 
 #define DB_VECTOR   1
 #define BP_VECTOR   3

@@ -94,6 +94,7 @@ MSR_GS_BASE = 0xc0000101
 
 .globl start
 start:
+        mov $stacktop, %esp
         push %ebx
         call setup_multiboot
         call setup_libcflat
@@ -106,7 +107,13 @@ start:
         jmpl $8, $start32
 
 prepare_32:
-        lgdtl gdt32_descr
+	lgdtl gdt32_descr
+	mov $0x10, %ax
+	mov %ax, %ds
+	mov %ax, %es
+	mov %ax, %fs
+	mov %ax, %gs
+	mov %ax, %ss
 
 	mov %cr4, %eax
 	bts $4, %eax  // pse
