@@ -163,6 +163,7 @@ start32:
         call main
 	push %eax
 	call exit
+	hlt
 
 load_tss:
 	lidt idt_descr
