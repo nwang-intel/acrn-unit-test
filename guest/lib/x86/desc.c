@@ -235,6 +235,7 @@ void setup_idt(void)
 		    set_idt_entry(i, idt_handlers[i], 0);
     handle_exception(0, check_exception_table);
     handle_exception(6, check_exception_table);
+    handle_exception(11, check_exception_table);
     handle_exception(13, check_exception_table);
 }
 
