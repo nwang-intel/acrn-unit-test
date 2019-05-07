@@ -87,7 +87,7 @@ $(TEST_DIR)/stitched.elf: $(stitched-test-cases:.flat=_prelink.o) $(FLATLIBS) $(
 	@chmod a-x $@
 
 $(TEST_DIR)/%_prelink.o: $(TEST_DIR)/%.o
-	$(LD) -r -o $@ $^
+	$(LD) -r -melf_i386 -o $@ $^
 	@$(OBJCOPY) \
 		--keep-global-symbol=main \
 		--add-symbol main_$*=.text:0x`nm $@ | grep "T main" | egrep -o "[0-9a-f]{16}"`,function,global \

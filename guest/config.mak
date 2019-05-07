@@ -1,7 +1,8 @@
 SRCDIR=${shell pwd}
 PREFIX=/usr/local
 HOST=x86_64
-ARCH=x86_64
+#ARCH=x86_64
+ARCH=i386
 ARCH_NAME=x86_64
 PROCESSOR=x86_64
 CC=gcc

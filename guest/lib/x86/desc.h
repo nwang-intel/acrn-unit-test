@@ -122,6 +122,7 @@ typedef struct  __attribute__((packed)) {
 #define KERNEL_CS32 0x20
 #else
 #define TSS_INTR    0x20
+#define TSS_INTR_TI 0x24
 #endif
 #define KERNEL_CS16 0x28
 #define KERNEL_DS16 0x30
